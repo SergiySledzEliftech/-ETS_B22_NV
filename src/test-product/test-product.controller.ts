@@ -10,18 +10,21 @@ export class TestProductController {
     }
 
     @Get()
+    @Header('Access-Control-Allow-Origin', '*')
     findAll(): Promise<TestProduct[]> {
         // return 'This action returns all cats';
         return this.testProductService.getAll();
     }
 
     @Get(':id')
+    @Header('Access-Control-Allow-Origin', '*')
     getOne(@Param('id') id: string): Promise<TestProduct> {
         // return 'This action returns all cats';
         return this.testProductService.getById(id);
     }
 
     @Post()
+    @Header('Access-Control-Allow-Origin', '*')
     @HttpCode(HttpStatus.CREATED)
     @Header('Cache-Control', 'none')
     create(@Body() createTestProductDTO: CreateTestProductDto): Promise<TestProduct>{
@@ -29,11 +32,13 @@ export class TestProductController {
     }
 
     @Delete(':id')
+    @Header('Access-Control-Allow-Origin', '*')
     remove(@Param('id') id: string): Promise<TestProduct>{
         return this.testProductService.remove(id);
     }
 
     @Put(':id')
+    @Header('Access-Control-Allow-Origin', '*')
     update(@Body() updateTestProductDto: UpdateTestProductDto, @Param(':id') id: string): Promise<TestProduct>{
         return this.testProductService.update(id, updateTestProductDto);
     }
