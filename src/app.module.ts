@@ -13,8 +13,7 @@ import { StatisticsModule } from './statistics/statistics.module';
 		TestProductModule,
 		NewsModule,
 		ConfigModule.forRoot(),
-		// MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
-		MongooseModule.forRoot(`mongodb://localhost:27017`),
+		MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
 		StatisticsModule,
 	],
 	controllers: [

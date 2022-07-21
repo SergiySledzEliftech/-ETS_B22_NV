@@ -14,7 +14,7 @@ export class StatisticsService {
         return this.statisticsModel.find().exec()
     }
 
-    async getOneStatistics (dateProp:Date) : Promise<Statistics>{
+    async getOneStatistics (dateProp:number) : Promise<Statistics>{
         return this.statisticsModel.findOne({date:dateProp})
     }
 

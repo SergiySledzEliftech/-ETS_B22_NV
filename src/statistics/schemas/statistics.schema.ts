@@ -6,7 +6,7 @@ export type StatisticsDocument = Statistics & Document
 @Schema()
 export class Statistics{
     @Prop()
-    date:Date
+    date:number
 
     @Prop()
     users: Array<number>
