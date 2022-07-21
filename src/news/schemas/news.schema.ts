@@ -5,9 +5,6 @@ export type NewsDocument = News & Document
 
 @Schema()
 export class News {
-    @Prop() 
-    id:number
-
     @Prop()
     title:string
 
@@ -18,4 +15,4 @@ export class News {
     img: string
 }
 
-export const NewsSchema = SchemaFactory.createForClass(News);
+export const NewsSchema = SchemaFactory.createForClass(News)
