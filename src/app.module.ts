@@ -7,6 +7,8 @@ import { NewsModule } from './news/news.module';
 import { AppGateway } from './app.gateway';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Top10Module } from './top10/top10.module';
+import { PremiumController } from './premium/premium.controller';
+import { PremiumModule } from './premium/premium.module';
 
 @Module({
 	imports: [
@@ -15,9 +17,11 @@ import { Top10Module } from './top10/top10.module';
 		MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
 		StatisticsModule,
 		Top10Module,
+		PremiumModule,
 	],
 	controllers: [
-		AppController]
+		AppController,
+	]
 	,
 	providers: [
 		AppService,
