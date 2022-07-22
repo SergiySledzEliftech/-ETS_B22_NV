@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { Product } from './schemas/products.schema';
 import { PremiumService } from './premium.service';
 
@@ -9,5 +9,10 @@ export class PremiumController {
     @Get()
     getProducts():Promise<Product[]>{
         return this.productService.getProducts()
+    }
+
+    @Get(':limiter')
+    getProductsByLimiter(@Param('limiter') limiter):Promise<Product[]>{
+        return this.productService.getProductsByLimiter(limiter)
     }
 }

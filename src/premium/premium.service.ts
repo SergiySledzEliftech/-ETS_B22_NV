@@ -11,4 +11,10 @@ export class PremiumService {
         const allProducts = await this.productModel.find().exec()
         return allProducts.filter(e=>e.price>1000)
     }
+
+    async getProductsByLimiter(limiter:string):Promise<Product[]> {
+        const allProducts = await this.productModel.find().exec()
+        const limits:Array<number> = limiter.split('-').map(e=>+e)
+        return allProducts.filter(e=>e.price>1000).slice(limits[0], limits[1])
+    }
 }
