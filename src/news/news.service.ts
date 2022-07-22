@@ -14,8 +14,15 @@ export class NewsService {
         return this.newsModel.find().exec()
     }
 
-    async getOneArticle (id:string) : Promise<News>{
-        return this.newsModel.findById(id)
+    async getOneArticle (param:string) : Promise<News>{
+        if(isNaN(Number(param))){
+            return this.newsModel.findById(param)
+        }
+
+        else{
+            const news = await this.newsModel.find().exec()
+            return news[param]
+        }
     }
 
     async addArticle (CreateNewsDto : CreateNewsDto) : Promise<News> {

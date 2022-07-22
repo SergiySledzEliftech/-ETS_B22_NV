@@ -25,9 +25,9 @@ export class NewsController {
         return this.newsService.addArticle(CreateNewsDto)
     }
 
-    @Delete(':id')
-    removeArticle(@Param('id') id:string){
-        return this.newsService.removeArticle(id)
+    @Delete(':param')
+    removeArticle(@Param('param') param:string){
+        return this.newsService.removeArticle(param)
     }
 
     @Put(':id')
