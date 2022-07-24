@@ -1,5 +1,5 @@
 export class CreateTestProductDto {
-    name: string;
-    price: number;
-    isAvailable: string;
+	name: string;
+	price: number;
+	isAvailable: string;
 }
