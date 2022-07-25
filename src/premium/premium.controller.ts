@@ -10,9 +10,4 @@ export class PremiumController {
     getProducts():Promise<Product[]>{
         return this.productService.getProducts()
     }
-
-    @Get(':limiter')
-    getProductsByLimiter(@Param('limiter') limiter):Promise<Product[]>{
-        return this.productService.getProductsByLimiter(limiter)
-    }
 }
