@@ -10,11 +10,11 @@ import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
-    TestProductModule, 
-    MongooseModule.forRoot('mongodb+srv://mongoUser:mongoUser@cluster0.j25ouwy.mongodb.net/test'),
-    AuthModule,
-    PassportModule,
-    UsersModule],
+	TestProductModule, 
+	MongooseModule.forRoot('mongodb+srv://mongoUser:mongoUser@cluster0.j25ouwy.mongodb.net/test'),
+	AuthModule,
+	PassportModule,
+	UsersModule],
   controllers: [AppController],
   providers: [AppService, JwtService],
 })
