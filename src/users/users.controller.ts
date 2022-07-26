@@ -10,9 +10,14 @@ export class UsersController {
 
 	}
 
+	// @Get()
+	// getAll(): Promise<User[]> {
+	// 	return this.usersService.getAll();
+	// }
+
 	@Get()
-	getAll(): Promise<User[]> {
-		return this.usersService.getAll();
+	async getAll() {
+		return this.usersService.findAll();
 	}
 
 	@Get(':id')

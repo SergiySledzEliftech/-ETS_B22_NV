@@ -16,7 +16,7 @@ import { Socket, Server } from 'socket.io';
 
 @WebSocketGateway({
   cors: {
-    origin: '*',
+	origin: '*',
   },
 })
 
@@ -28,18 +28,19 @@ export class AppGateway
 
   @SubscribeMessage('msgToServer')
   handleMessage(client: Socket, payload: string): void {
-    this.server.emit('msgToClient', payload);
+	this.server.emit('msgToClient', payload);
   }
 
   afterInit(server: Server) {
-    this.logger.log('Init');
+	this.logger.log('Init');
   }
 
   handleDisconnect(client: Socket) {
-    this.logger.log(`Client disconnected: ${client.id}`);
+	this.logger.log(`Client disconnected: ${client.id}`);
   }
 
+	// tslint:disable-next-line:no-any
   handleConnection(client: Socket, ...args: any[]) {
-    this.logger.log(`Client connected: ${client.id}`);
+	this.logger.log(`Client connected: ${client.id}`);
   }
 }
