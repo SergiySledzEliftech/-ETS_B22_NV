@@ -4,23 +4,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TestProductModule } from './test-product/test-product.module';
-
-// <<<<<<< HEAD
-// import { GoodController } from './good/good.controller';
-//
-// @Module({
-//   // tslint:disable-next-line:max-line-length
-//   imports: [TestProductModule, MongooseModule.forRoot
-//   'mongodb+srv://serhii:12345@cluster0.hr9dt.mongodb.net/?retryWrites=true&w=majority')],
-//   controllers: [AppController, GoodController],
-//   providers: [AppService],
-// =======
-
 import { AppGateway } from './app.gateway';
-import {CommentsModule} from './comments/comments.module';
+import { UsersModule } from './users/users.module';
+import { GoodModule } from './good/good.module';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
 	imports: [
+		UsersModule,
+		GoodModule,
 		CommentsModule,
 		TestProductModule,
 		ConfigModule.forRoot(),
