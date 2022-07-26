@@ -10,11 +10,6 @@ export class UsersController {
 
 	}
 
-	// @Get()
-	// getAll(): Promise<User[]> {
-	// 	return this.usersService.getAll();
-	// }
-
 	@Get()
 	async getAll() {
 		return this.usersService.findAll();
