@@ -32,4 +32,14 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
+  async saveRefreshToken(email: string, tokenId: string) {
+    const filter = { email: email };
+    await this.userModel.findOneAndUpdate(filter, 
+      {
+        $set:{
+          refresh_token : tokenId
+        }
+      })
+  }
+
 }
