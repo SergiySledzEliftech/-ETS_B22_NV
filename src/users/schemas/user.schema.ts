@@ -6,10 +6,10 @@ export type UserDocument = User & Document;
 @Schema()
 export class User {
   @Prop()
-  first_name: string;
+  firstName: string;
 
   @Prop()
-  last_name: string;
+  lastName: string;
 
   @Prop()
   phone: number;
@@ -18,7 +18,7 @@ export class User {
   email: string;
 
   @Prop()
-  password: string;
+  passHash: string;
 
   @Prop()
   refresh_token: string;
