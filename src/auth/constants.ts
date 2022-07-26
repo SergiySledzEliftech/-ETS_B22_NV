@@ -3,4 +3,4 @@ export const jwtConstants = {
   };
 export const jwtRtConstants = {
   secret: 'verySecretKey'
-}
+};
