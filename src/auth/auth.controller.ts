@@ -11,7 +11,7 @@ export class AuthController {
 	@Post('signup')
 	@HttpCode(HttpStatus.CREATED)
 	@Header('Access-Control-Allow-Origin', '*')
-	signup(@Body() user: CreateUserDto) {
+	async signup(@Body() user: CreateUserDto) {
 		return this.authService.register(user);
 	}
 
@@ -29,5 +29,5 @@ export class AuthController {
 	}
 
 
-	
+
 }

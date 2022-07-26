@@ -16,6 +16,7 @@ export class AuthService {
 		return bcrypt.hash(password, 12);
 		}
 
+	// tslint:disable-next-line:no-any
 		async register(user: Readonly<CreateUserDto>): Promise<User | any> {
 		const { first_name, last_name, phone, email, password } = user;
 		const existingUser = await this.usersService.findByEmail(email);
@@ -33,6 +34,7 @@ export class AuthService {
 		return bcrypt.compare(password, hashedPassword);
 		}
 
+	// tslint:disable-next-line:no-any
 		async validateUser(email: string, password: string): Promise<any> {
 		const user = await this.usersService.findByEmail(email);
 		if (this.comparePassword) {
@@ -40,6 +42,7 @@ export class AuthService {
 		}
 		return null;
 		}
+	// tslint:disable-next-line:no-any
 		async issueTokenPair(payload: any) {
 		const refreshTokenId = uuidv4();
 		const refresh_token = this.jwtService.sign({refreshTokenId}, {
@@ -54,12 +57,14 @@ export class AuthService {
 		};
 		}
 
+	// tslint:disable-next-line:no-any
 		async login(user: any) {
 		const payload = { username: user.email, sub: user._id };
 		const tokenPair = this.issueTokenPair(payload);
 		return tokenPair;
 		}
 
+	// tslint:disable-next-line:no-any
 		async getUser(payload: any) {
 		const userInCollection = await this.usersService.findByEmail(payload.username);
 		const user = { _id: userInCollection._id,
