@@ -12,6 +12,7 @@ import { AppGateway } from './app.gateway';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Top10Module } from './top10/top10.module';
 import { PremiumModule } from './premium/premium.module';
+import { PartnersModule } from './partners/partners.module';
 
 @Module({
 	imports: [
@@ -23,7 +24,8 @@ import { PremiumModule } from './premium/premium.module';
 		PremiumModule,
 		AuthModule,
 		PassportModule,
-		UsersModule
+		UsersModule,
+		PartnersModule
 	],
 	controllers: [
 		AppController,
@@ -32,7 +34,7 @@ import { PremiumModule } from './premium/premium.module';
 	providers: [
 		AppService,
 		AppGateway,
-		JwtService
+		JwtService,
 	],
 })
 export class AppModule {}
