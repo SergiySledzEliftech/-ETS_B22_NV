@@ -12,9 +12,15 @@ export class AppController {
   getHello(): string {
 	return this.appService.getHello();
   }
-  @UseGuards(JwtAuthGuard)
+
   @Get('profile')
   getProfile(@Request() req) {
 	return req.body;
+  }
+
+  @Get('categories')
+  getCategories(@Request() req) {
+  console.log(req.headers);
+	return 'hello';
   }
 }
