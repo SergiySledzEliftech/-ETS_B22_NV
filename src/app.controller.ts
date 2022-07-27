@@ -20,7 +20,7 @@ export class AppController {
 
   @Get('categories')
   getCategories(@Request() req) {
-  console.log(req.headers);
+  // console.log(req.headers);
 	return 'hello';
   }
 }

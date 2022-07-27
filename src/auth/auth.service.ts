@@ -45,6 +45,7 @@ export class AuthService {
 	// tslint:disable-next-line:no-any
 		async issueTokenPair(payload: any) {
 		const refreshTokenId = uuid();
+		
 		const refresh_token = this.jwtService.sign({refreshTokenId}, {
 			secret: jwtRtConstants.secret,
 			expiresIn: '7d',
@@ -74,5 +75,10 @@ export class AuthService {
 		return {user};
 		}
 
+		async logout(payload: any) {
+			console.log(payload.username);
+			const user = await this.usersService.removeRefreshToken(payload.username);
+			return payload
+		}
 }
 
