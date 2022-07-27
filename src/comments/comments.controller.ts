@@ -1,6 +1,6 @@
 import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post} from '@nestjs/common';
 import {CommentsService} from './comments.service';
-import {Comment} from './schemas/comments.shema';
+import {Comment} from './schemas/comments.schema';
 import {CreateCommentDto} from './dto/create-comment.dto';
 
 @Controller('comments')

@@ -1,12 +1,16 @@
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
-import {Document, isObjectIdOrHexString} from 'mongoose';
+import * as mongoose from 'mongoose';
+import { User } from '../../users/schemas/user.schema';
+import { Product } from '../../good/schemas/good.schema';
 
 export type CommentDocument = Comment & Document;
 
 @Schema()
 export class Comment{
-	// @Prop() productId: object;
-	// @Prop() userId: object;
+	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+	userId: User;
+	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Product' })
+	productId: Product;
 	@Prop() comment: string;
 	@Prop() advantages: string;
 	@Prop() disadvantages: string;
