@@ -1,13 +1,16 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NewsModule } from './news/news.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtService } from '@nestjs/jwt';
+import { UsersModule } from './users/users.module';
+import { PassportModule } from '@nestjs/passport';
 import { AppGateway } from './app.gateway';
 import { StatisticsModule } from './statistics/statistics.module';
 import { Top10Module } from './top10/top10.module';
-import { PremiumController } from './premium/premium.controller';
 import { PremiumModule } from './premium/premium.module';
 
 @Module({
@@ -18,6 +21,9 @@ import { PremiumModule } from './premium/premium.module';
 		StatisticsModule,
 		Top10Module,
 		PremiumModule,
+		AuthModule,
+		PassportModule,
+		UsersModule
 	],
 	controllers: [
 		AppController,
@@ -25,8 +31,8 @@ import { PremiumModule } from './premium/premium.module';
 	,
 	providers: [
 		AppService,
-		AppGateway
+		AppGateway,
+		JwtService
 	],
 })
-export class AppModule {
-}
+export class AppModule {}
