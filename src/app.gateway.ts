@@ -39,7 +39,7 @@ export class AppGateway
 	this.logger.log(`Client disconnected: ${client.id}`);
   }
 
-  // tslint:disable-next-line:no-any
+	// tslint:disable-next-line:no-any
   handleConnection(client: Socket, ...args: any[]) {
 	this.logger.log(`Client connected: ${client.id}`);
   }

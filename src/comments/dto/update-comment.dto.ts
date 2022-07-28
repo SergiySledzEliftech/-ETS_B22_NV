@@ -1,4 +1,4 @@
-export class CreateCommentDto {
+export class UpdateCommentDto {
 	userId: string;
 	productId: string;
 	comment: string;

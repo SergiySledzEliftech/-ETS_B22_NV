@@ -7,10 +7,8 @@ export type CommentDocument = Comment & Document;
 
 @Schema()
 export class Comment{
-	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-	userId: User;
-	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Product' })
-	productId: Product;
+	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })	userId: User;
+	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Product' })	productId: Product;
 	@Prop() comment: string;
 	@Prop() advantages: string;
 	@Prop() disadvantages: string;

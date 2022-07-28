@@ -1,7 +1,8 @@
-import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post, Put, Query} from '@nestjs/common';
 import {CommentsService} from './comments.service';
 import {Comment} from './schemas/comments.schema';
 import {CreateCommentDto} from './dto/create-comment.dto';
+import {UpdateCommentDto} from './dto/update-comment.dto';
 
 @Controller('comments')
 export class CommentsController{
@@ -9,14 +10,16 @@ export class CommentsController{
 
 	@Get()
 	@Header('Access-Control-Allow-Origin', '*')
-	getAllComments(): Promise<Comment[]> {
-		return this.commentsService.getAllComments();
+	getAllComments(@Query('goodId') goodId: string): Promise<Comment[]> {
+		return this.commentsService.getAllComments(goodId);
 	}
 
 	@Get('/my')
 	@Header('Access-Control-Allow-Origin', '*')
-	getUserComments(): Promise<Comment[]> {
-		return this.commentsService.getUserComments();
+	getUserComments(@Query('userId') userId: string,
+					@Query('goodId') goodId: string
+	): Promise<Comment[]> {
+		return this.commentsService.getUserComments(userId, goodId);
 	}
 
 	@Post()
@@ -31,5 +34,11 @@ export class CommentsController{
 	@Header('Access-Control-Allow-Origin', '*')
 	remove(@Param('id') id: string): Promise<Comment>{
 		return this.commentsService.remove(id);
+	}
+
+	@Put(':id')
+	@Header('Access-Control-Allow-Origin', '*')
+	updateComment(@Body() updateCommentDto: UpdateCommentDto, @Param('id') id: string): Promise<Comment> {
+		return this.commentsService.updateComment(id, updateCommentDto);
 	}
 }
