@@ -9,5 +9,5 @@ export class UpdateUserDto {
 	readonly optionalPhone: string;
 	readonly location: string;
 	readonly rating: number;
-	readonly passHash: string;
+	// readonly passHash: string;
 }
