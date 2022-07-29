@@ -1,6 +1,6 @@
 import {Body, Controller, Get, Query} from '@nestjs/common';
 import {SearchService} from './search.service';
-import {Product} from './schemas/product.schema';
+import {Products} from './schemas/products.schema';
 import {Category} from './schemas/categories.schema';
 import {Options} from './interfaces/options.interface';
 
@@ -10,17 +10,17 @@ export class SearchController {
 	}
 
 	@Get()
-	async findProductByQuery(@Query('q') q: string): Promise<Product[]> {
+	async findProductByQuery(@Query('q') q: string): Promise<Products[]> {
 		return this.searchService.getProductByQuery(q);
 	}
 
 	@Get('all')
-	async getAllProducts(): Promise<Product[]> {
+	async getAllProducts(): Promise<Products[]> {
 		return this.searchService.findAllProducts();
 	}
 
 	@Get('filter')
-	async filterProducts(@Body() options:Options): Promise<Product[]> {
+	async filterProducts(@Body() options:Options): Promise<Products[]> {
 		return this.searchService.getFilterProducts(options);
 	}
 

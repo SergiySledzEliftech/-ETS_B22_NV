@@ -2,10 +2,10 @@ import {Prop, raw, Schema, SchemaFactory} from '@nestjs/mongoose';
 import {Document} from 'mongoose';
 
 
-export type ProductDocument = Product & Document;
+export type ProductsDocument = Products & Document;
 
 @Schema()
-export class Product {
+export class Products {
 	// @Prop()
 	// _id: object;
 	@Prop()
@@ -54,7 +54,7 @@ export class Product {
 	// category: any;
 }
 
-export const ProductSchema = SchemaFactory.createForClass(Product);
+export const ProductsSchema = SchemaFactory.createForClass(Products);
 
 // export const ProductSchema = new mongoose.Schema({
 // 	title: {type: String, required: true,},
