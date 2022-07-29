@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NewsModule } from './news/news.module';
@@ -13,6 +13,7 @@ import { StatisticsModule } from './statistics/statistics.module';
 import { Top10Module } from './top10/top10.module';
 import { PremiumModule } from './premium/premium.module';
 import { PartnersModule } from './partners/partners.module';
+import {SearchModule} from './search/search.module';
 
 @Module({
 	imports: [
@@ -25,7 +26,8 @@ import { PartnersModule } from './partners/partners.module';
 		AuthModule,
 		PassportModule,
 		UsersModule,
-		PartnersModule
+		PartnersModule,
+		SearchModule
 	],
 	controllers: [
 		AppController,
