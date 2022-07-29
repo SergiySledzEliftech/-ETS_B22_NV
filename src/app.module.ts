@@ -5,10 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TestProductModule } from './test-product/test-product.module';
 import { AppGateway } from './app.gateway';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
 	imports: [
-		TestProductModule,
+		TestProductModule, PaymentsModule,
 		ConfigModule.forRoot(),
 		MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
 	],
