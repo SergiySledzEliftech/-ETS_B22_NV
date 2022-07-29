@@ -1,8 +1,5 @@
-// import * as mongoose from 'mongoose';
-import searchable from 'mongoose-regex-search';
 import {Prop, raw, Schema, SchemaFactory} from '@nestjs/mongoose';
-import mongoose, {Document} from 'mongoose';
-import {Category} from './categories.schema';
+import {Document} from 'mongoose';
 
 
 export type ProductDocument = Product & Document;
