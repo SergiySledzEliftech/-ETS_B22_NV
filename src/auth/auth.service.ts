@@ -48,7 +48,7 @@ export class AuthService {
 		
 		const refresh_token = this.jwtService.sign({refreshTokenId}, {
 			secret: jwtRtConstants.secret,
-			expiresIn: '7d',
+			expiresIn: '30d',
 		});
 		await this.usersService.saveRefreshToken(payload.username, refreshTokenId);
 		const token = this.jwtService.sign(payload);
@@ -71,14 +71,27 @@ export class AuthService {
 		const user = { _id: userInCollection._id,
 				firstName: userInCollection.firstName,
 				lastName: userInCollection.lastName,
-				phone: userInCollection.phone};
+				phone: userInCollection.phone,
+				email: userInCollection.email};
 		return {user};
 		}
 
+	// tslint:disable-next-line:no-any
+		async refreshToken(req: any) {
+			const payloadRt = this.jwtService.decode(req.refresh_token);
+			// const str = JSON.stringify(payloadRt);
+			// const parsedStr = JSON.parse(str);
+			const parsedStr: string | {[key: string] : any} = JSON.parse(payloadRt);
+			const user = await this.usersService.findByRefreshTokenId(parsedStr.refreshTokenId);
+			const payloadAt = { username: user.email, sub: user._id };
+			console.log(user.email);
+			const res = await this.issueTokenPair(payloadAt);
+			return res;
+		}
+
+	// tslint:disable-next-line:no-any
 		async logout(payload: any) {
-			console.log(payload.username);
-			const user = await this.usersService.removeRefreshToken(payload.username);
-			return payload
+			await this.usersService.removeRefreshToken(payload.username);
 		}
 }
 

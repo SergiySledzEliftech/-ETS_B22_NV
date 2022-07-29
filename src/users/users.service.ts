@@ -45,9 +45,13 @@ export class UsersService {
 	const filter = { email: email };
 	await this.userModel.findOneAndUpdate(filter,
 		{
-		$unset:{
+		$set:{
 			refresh_token : ""
 		}
 		});
+  }
+  async findByRefreshTokenId(tokenId:string) {
+	const filter = { refresh_token: tokenId };
+	return this.userModel.findOne(filter).exec();
   }
 }
