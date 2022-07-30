@@ -1,5 +1,3 @@
-import {Prop, raw} from '@nestjs/mongoose';
-
 export class UpdateProductDto{
 	title: string;
 	price: number;
