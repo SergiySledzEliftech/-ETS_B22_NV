@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post, Put, Query} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query} from '@nestjs/common';
 import {LikesService} from './likes.service';
 import {Like} from './schema/likes.schema';
 import {CreateLikeDto} from './dto/create-like.dto';
