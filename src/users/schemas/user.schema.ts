@@ -5,24 +5,41 @@ export type UserDocument = User & Document;
 
 @Schema()
 export class User {
-  @Prop()
-  firstName: string;
+	@Prop()
+	firstName: string;
 
-  @Prop()
-  lastName: string;
+	@Prop()
+	lastName: string;
 
-  @Prop()
-  phone: number;
+	@Prop()
+	nickname: string;
 
-  @Prop()
-  email: string;
+	@Prop()
+	about: string;
 
-  @Prop()
-  passHash: string;
+	@Prop()
+	avatar: string;
 
-  @Prop()
-  refresh_token: string;
+	@Prop()
+	email: string;
 
+	@Prop()
+	phone: string;
+
+	@Prop()
+	optionalPhone: string;
+
+	@Prop()
+	location: string;
+
+	@Prop()
+	rating: number;
+
+	@Prop()
+	passHash: string;
+
+	@Prop()
+	refresh_token: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
