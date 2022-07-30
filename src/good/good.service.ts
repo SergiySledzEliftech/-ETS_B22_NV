@@ -14,4 +14,13 @@ export class GoodService {
 	async updateGood(id: string, productDto: UpdateProductDto): Promise<Product> {
 		return this.productModel.findByIdAndUpdate(id, productDto, {new: true});
 	}
+	async getGoodRecommendations(id: string, category, min, max, status, rating): Promise<Product[]> {
+		return this.productModel.find({
+			_id : { $ne: id},
+			category: category,
+			status: status,
+			price: {$gte: min, $lte: max},
+			rating: {$gte: rating}
+		}).limit(3).exec();
+	}
 }

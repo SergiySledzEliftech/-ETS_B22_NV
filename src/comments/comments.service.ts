@@ -14,7 +14,10 @@ export class CommentsService{
 		return this.commentModel.find({productId: goodId}).sort({date_created: -1}).exec();
 	}
 	async getUserComments(userId: string, goodId: string): Promise<Comment[]> {
-		return this.commentModel.find({userId: userId, productId: goodId}).sort({date_created: -1}).exec();
+		return this.commentModel
+			.find({ userId: userId, productId: goodId })
+			.sort({ date_created: -1 })
+			.exec();
 	}
 	async createComment(commentDto: CreateCommentDto): Promise<Comment> {
 		const newComment = new this.commentModel(commentDto);
