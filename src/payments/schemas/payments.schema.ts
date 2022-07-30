@@ -6,13 +6,26 @@ export type PaymentsDocument = Payments & Document;
 @Schema()
 export class Payments {
 	@Prop()
-	cartNumber: number;
+	cardNumber: String;
 
 	@Prop()
-	price: number;
+	cardMonth: String;
 
 	@Prop()
-	order: String;
+	cardYear: String;
+
+	@Prop()
+	cardCvv: String;
+
+	@Prop()
+	paidAmount: number;
+
+	@Prop()
+	billNumber: String;
+
+	@Prop()
+	paidGoods: Array<any>
+
 }
 
 export const PaymentsSchema = SchemaFactory.createForClass(Payments);

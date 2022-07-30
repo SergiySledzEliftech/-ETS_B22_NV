@@ -9,23 +9,17 @@ import { JwtService } from '@nestjs/jwt';
 import { UsersModule } from './users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { AppGateway } from './app.gateway';
-<<<<<<< HEAD
-import { PaymentsModule } from './payments/payments.module';
-
-@Module({
-	imports: [
-		TestProductModule, PaymentsModule,
-=======
 import { StatisticsModule } from './statistics/statistics.module';
 import { Top10Module } from './top10/top10.module';
 import { PremiumModule } from './premium/premium.module';
 import { PartnersModule } from './partners/partners.module';
 import {SearchModule} from './search/search.module';
+import { PaymentsModule } from './payments/payments.module';
+
 
 @Module({
 	imports: [
 		NewsModule,
->>>>>>> dev
 		ConfigModule.forRoot(),
 		MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
 		StatisticsModule,
@@ -35,7 +29,8 @@ import {SearchModule} from './search/search.module';
 		PassportModule,
 		UsersModule,
 		PartnersModule,
-		SearchModule
+		SearchModule,
+		PaymentsModule,
 	],
 	controllers: [
 		AppController,

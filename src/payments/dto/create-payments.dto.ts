@@ -1,5 +1,9 @@
 export class CreatePaymentsDto {
-    readonly cartNumber;
-    readonly price;
-    readonly order;
+    readonly ccardNumber;
+    readonly cardMonth;
+    readonly cardYear;
+    readonly cardCvv
+    readonly paidAmount
+    readonly billNumber
+    readonly paidGoods
 }
