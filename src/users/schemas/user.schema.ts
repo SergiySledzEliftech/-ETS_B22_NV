@@ -38,8 +38,8 @@ export class User {
 	@Prop()
 	passHash: string;
 
-	@Prop()
-	refresh_token: string;
+  @Prop()
+  refresh_token: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
