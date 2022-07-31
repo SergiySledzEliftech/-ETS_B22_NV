@@ -1,8 +1,8 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Put } from '@nestjs/common';
+import {Body, Controller, Get, Param, Put, UsePipes, ValidationPipe} from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
-import {UpdateUserPassDto} from './dto/update-user-pass.dto';
+import { UpdateUserPassDto } from './dto/update-user-pass.dto';
 
 @Controller('users')
 export class UsersController {
@@ -22,11 +22,13 @@ export class UsersController {
 	}
 
 	@Put(':id')
-	updateUser(@Body() updateUserDto: UpdateUserDto, @Param('id') id): Promise<User> {
+	@UsePipes(ValidationPipe)
+	updateUser(@Body() updateUserDto: UpdateUserDto, @Param('id') id): Promise<string> {
 		return this.usersService.update(id, updateUserDto);
 	}
 
 	@Put(':id/pass')
+	@UsePipes(ValidationPipe)
 	updateUserPass(@Body() updateUserPassDto: UpdateUserPassDto, @Param('id') id) {
 		return this.usersService.updatePass(id, updateUserPassDto);
 	}
