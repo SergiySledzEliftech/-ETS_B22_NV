@@ -2,7 +2,9 @@ import {Body, Controller, Get, Param, Put, Query} from '@nestjs/common';
 import { GoodService } from './good.service';
 import {UpdateProductDto} from './dto/update-product.dto';
 import {Product} from './schemas/good.schema';
+import {Public} from '../auth/auth.controller';
 
+@Public()
 @Controller('products')
 export class GoodController {
 	constructor(private readonly goodService: GoodService) {}
