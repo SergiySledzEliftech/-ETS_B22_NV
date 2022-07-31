@@ -46,7 +46,7 @@ export class UsersService {
 	await this.userModel.findOneAndUpdate(filter,
 		{
 		$set:{
-			refresh_token : ""
+			refresh_token : ''
 		}
 		});
   }
