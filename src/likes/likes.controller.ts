@@ -30,4 +30,8 @@ export class LikesController{
 	async removeLike(@Param('id') id: string): Promise<Like>{
 		return this.likesService.removeLike(id);
 	}
+	@Delete()
+	async removeCommentLikes(@Query('commentId') commentId: string): Promise<Like[]> {
+		return this.likesService.removeCommentLikes(commentId);
+	}
 }
