@@ -3,7 +3,9 @@ import {LikesService} from './likes.service';
 import {Like} from './schema/likes.schema';
 import {CreateLikeDto} from './dto/create-like.dto';
 import {UpdateLikeDto} from './dto/update-like.dto';
+import {Public} from '../auth/auth.controller';
 
+@Public()
 @Controller('likes')
 export class LikesController{
 	constructor(private readonly  likesService: LikesService) {}

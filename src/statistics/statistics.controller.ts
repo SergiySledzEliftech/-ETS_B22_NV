@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Put } from '@nestjs/common';
+import { Controller, Get, Param, Put } from '@nestjs/common';
 import { Statistics } from './schemas/statistics.schema';
 import { StatisticsService } from './statistics.service';
 

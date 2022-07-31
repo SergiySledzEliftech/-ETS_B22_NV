@@ -3,7 +3,9 @@ import {CommentsService} from './comments.service';
 import {Comment} from './schemas/comments.schema';
 import {CreateCommentDto} from './dto/create-comment.dto';
 import {UpdateCommentDto} from './dto/update-comment.dto';
+import {Public} from '../auth/auth.controller';
 
+@Public()
 @Controller('comments')
 export class CommentsController{
 	constructor(private readonly commentsService: CommentsService) {}
