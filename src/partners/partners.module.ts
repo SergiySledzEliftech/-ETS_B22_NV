@@ -5,10 +5,10 @@ import { PartnersService } from './partners.service';
 import { Partner, PartnerSchema } from './scemas/partners.schema';
 
 @Module({
-    imports:[MongooseModule.forFeature([
-        {name:Partner.name, schema:PartnerSchema}
-    ])],
-    providers:[PartnersService],
-    controllers:[PartnersController]
+	imports:[MongooseModule.forFeature([
+		{name:Partner.name, schema:PartnerSchema}
+	])],
+	providers:[PartnersService],
+	controllers:[PartnersController]
 })
 export class PartnersModule {}
