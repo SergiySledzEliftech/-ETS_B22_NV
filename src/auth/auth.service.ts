@@ -34,8 +34,7 @@ export class AuthService {
 		return bcrypt.compare(passHash, hashedPassword);
 		}
 
-	// tslint:disable-next-line:no-any
-		async validateUser(email: string, passHash: string): Promise<any> {
+		async validateUser(email: string): Promise<any> {
 		const user = await this.usersService.findByEmail(email);
 		if (this.comparePassword) {
 			return user;
@@ -79,9 +78,8 @@ export class AuthService {
 	// tslint:disable-next-line:no-any
 		async refreshToken(req: any) {
 			const payloadRt = this.jwtService.decode(req.refresh_token);
-			// const str = JSON.stringify(payloadRt);
-			// const parsedStr = JSON.parse(str);
-			const parsedStr: string | {[key: string] : any} = JSON.parse(payloadRt);
+			const str = JSON.stringify(payloadRt);
+			const parsedStr = JSON.parse(str);
 			const user = await this.usersService.findByRefreshTokenId(parsedStr.refreshTokenId);
 			const payloadAt = { username: user.email, sub: user._id };
 			console.log(user.email);
