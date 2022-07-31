@@ -52,6 +52,7 @@ export class UsersService {
   }
   async findByRefreshTokenId(tokenId:string) {
 	const filter = { refresh_token: tokenId };
-	return this.userModel.findOne(filter).exec();
+	const user = await this.userModel.findOne(filter).exec();
+	return user;
   }
 }

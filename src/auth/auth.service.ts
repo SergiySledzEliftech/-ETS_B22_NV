@@ -34,6 +34,7 @@ export class AuthService {
 		return bcrypt.compare(passHash, hashedPassword);
 		}
 
+	// tslint:disable-next-line:no-any
 		async validateUser(email: string): Promise<any> {
 		const user = await this.usersService.findByEmail(email);
 		if (this.comparePassword) {
@@ -44,7 +45,7 @@ export class AuthService {
 	// tslint:disable-next-line:no-any
 		async issueTokenPair(payload: any) {
 		const refreshTokenId = uuid();
-		
+
 		const refresh_token = this.jwtService.sign({refreshTokenId}, {
 			secret: jwtRtConstants.secret,
 			expiresIn: '30d',
@@ -82,7 +83,6 @@ export class AuthService {
 			const parsedStr = JSON.parse(str);
 			const user = await this.usersService.findByRefreshTokenId(parsedStr.refreshTokenId);
 			const payloadAt = { username: user.email, sub: user._id };
-			console.log(user.email);
 			const res = await this.issueTokenPair(payloadAt);
 			return res;
 		}
