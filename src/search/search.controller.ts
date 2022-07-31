@@ -3,7 +3,9 @@ import {SearchService} from './search.service';
 import {Products} from './schemas/products.schema';
 import {Category} from './schemas/categories.schema';
 import {Options} from './interfaces/options.interface';
+import {Public} from '../auth/auth.controller';
 
+@Public()
 @Controller('search')
 export class SearchController {
 	constructor(private readonly searchService: SearchService) {
@@ -25,7 +27,7 @@ export class SearchController {
 	}
 
 	@Get('/categories')
-	findAllCategories(): Promise<Category[]> {
+	async findAllCategories(): Promise<Category[]> {
 		return this.searchService.getAllCategories();
 	}
 

@@ -44,6 +44,20 @@ export class UsersService {
 		});
   }
 
+  async removeRefreshToken(email: string) {
+	const filter = { email: email };
+	this.userModel.findOneAndUpdate(filter,
+		{
+		$set:{
+			refresh_token : ''
+		}
+		});
+  }
+  async findByRefreshTokenId(tokenId:string) {
+	const filter = { refresh_token: tokenId };
+	const user = await this.userModel.findOne(filter).exec();
+	return user;
+  }
 	async getById(id: string): Promise<User> {
 		return this.userModel.findById(id);
 	}
