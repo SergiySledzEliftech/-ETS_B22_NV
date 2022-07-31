@@ -18,16 +18,16 @@ export class AuthService {
 
 	// tslint:disable-next-line:no-any
 		async register(user: Readonly<CreateUserDto>): Promise<User | any> {
-			const { firstName, lastName, phone, email, passHash } = user;
-			const existingUser = await this.usersService.findByEmail(email);
+		const { firstName, lastName, phone, email, passHash } = user;
+		const existingUser = await this.usersService.findByEmail(email);
 			if (existingUser) {
 				throw new HttpException(
-					'An account with that email already exists!',
-					HttpStatus.CONFLICT,
-				);
+				'An account with that email already exists!',
+				HttpStatus.CONFLICT,
+		);
 			}
-			const hashedPassword = await this.hashPassword(passHash);
-			await this.usersService.create(firstName, lastName, phone, email, hashedPassword);
+		const hashedPassword = await this.hashPassword(passHash);
+		await this.usersService.create(firstName, lastName, phone, email, hashedPassword);
 		}
 
 		async comparePassword( passHash: string, hashedPassword: string ): Promise<boolean> {
