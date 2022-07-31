@@ -1,7 +1,7 @@
 export class CreateUserDto {
 	firstName: string;
 	lastName: string;
-	phone: string;
+	phone: number;
 	email: string;
 	passHash: string;
 }
