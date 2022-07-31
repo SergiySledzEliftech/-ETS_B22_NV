@@ -6,15 +6,15 @@ import {Public} from '../auth/auth.controller';
 @Public()
 @Controller('news')
 export class NewsController {
-    constructor(private readonly newsService : NewsService){}
+	constructor(private readonly newsService : NewsService){}
 
-    @Get()
-    getAllArticles () : Promise<News[]> {
-        return this.newsService.getAllArticles()
-    }
+	@Get()
+	async getAllArticles () : Promise<News[]> {
+		return this.newsService.getAllArticles();
+	}
 
-    @Get(':id')
-    getOneArticle (@Param('id') id) : Promise<News>{
-        return this.newsService.getOneArticle(id)
-    }
+	@Get(':id')
+	async getOneArticle (@Param('id') id) : Promise<News>{
+		return this.newsService.getOneArticle(id);
+	}
 }

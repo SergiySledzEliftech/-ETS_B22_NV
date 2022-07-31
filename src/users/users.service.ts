@@ -36,7 +36,7 @@ export class UsersService {
 
   async saveRefreshToken(email: string, tokenId: string) {
 	const filter = { email: email };
-	await this.userModel.findOneAndUpdate(filter,
+	this.userModel.findOneAndUpdate(filter,
 		{
 		$set:{
 			refresh_token : tokenId
@@ -46,7 +46,7 @@ export class UsersService {
 
   async removeRefreshToken(email: string) {
 	const filter = { email: email };
-	await this.userModel.findOneAndUpdate(filter,
+	this.userModel.findOneAndUpdate(filter,
 		{
 		$set:{
 			refresh_token : ''
