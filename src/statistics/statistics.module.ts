@@ -6,7 +6,7 @@ import { StatisticsService } from './statistics.service';
 
 @Module({
   imports: [MongooseModule.forFeature([
-    {name:Statistics.name, schema:StatisticsSchema}
+	{ name:Statistics.name, schema:StatisticsSchema }
   ])],
   providers: [StatisticsService],
   controllers: [StatisticsController]

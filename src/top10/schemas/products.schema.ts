@@ -1,67 +1,68 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ProductDocument = Product & Document
+export type ProductDocument = Product & Document;
 
 @Schema()
 export class Product {
-    
+	
 @Prop()
-title:string
+title:string;
 
 @Prop()
-price:number
+price:number;
 
 @Prop()
-description:string
+description:string;
 
 @Prop()
-rating:number
+rating:number;
 
 @Prop()
-brand:string
+brand:string;
 
 @Prop()
-category:string
+category:string;
 
 @Prop()
-thumbnail:string
+thumbnail:string;
 
 @Prop()
-images:Array<string>
+images:Array<string>;
 
 @Prop()
-categoryId:string
+categoryId:string;
 
 @Prop()
-lease_term:number
+lease_term:number;
 
 @Prop()
-lease_date:number
+lease_date:number;
 
 @Prop()
-expires_at:string
+expires_at:string;
 
 @Prop({type:Object})
-leaser_info:any
+// tslint:disable-next-line:no-any
+leaser_info:any;
 
 @Prop()
-status:string
+status:string;
 
 @Prop()
-isPrivate:boolean
+isPrivate:boolean;
 
 @Prop()
-condition:string
+condition:string;
 
 @Prop()
-isFree:boolean
+isFree:boolean;
 
 @Prop()
-location:string
+location:string;
 
 @Prop()
-date_created:number
+date_created:number;
 }
 
-export const ProductSchema = SchemaFactory.createForClass(Product)
+export const ProductSchema = SchemaFactory.createForClass(Product);

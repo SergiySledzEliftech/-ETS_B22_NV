@@ -37,6 +37,7 @@ export class Products {
 		nickname: { type: String },
 		avatar: { type: String }
 	}))
+		// tslint:disable-next-line:no-any
 	leaser_info: Record<string, any>;
 	@Prop()
 	status:string;
