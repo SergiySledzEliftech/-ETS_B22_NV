@@ -7,12 +7,12 @@ export class NewsController {
 	constructor(private readonly newsService : NewsService){}
 
 	@Get()
-	getAllArticles () : Promise<News[]> {
+	async getAllArticles () : Promise<News[]> {
 		return this.newsService.getAllArticles();
 	}
 
 	@Get(':id')
-	getOneArticle (@Param('id') id) : Promise<News>{
+	async getOneArticle (@Param('id') id) : Promise<News>{
 		return this.newsService.getOneArticle(id);
 	}
 }

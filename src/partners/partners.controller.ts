@@ -9,7 +9,7 @@ export class PartnersController {
 	constructor(private readonly partnersService:PartnersService) {}
 
 	@Get()
-	getAllPartners():Promise<Partner[]>{
+	async getAllPartners():Promise<Partner[]>{
 		return this.partnersService.getAllPartners();
 	}
 }

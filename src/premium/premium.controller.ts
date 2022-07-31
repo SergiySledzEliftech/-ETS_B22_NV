@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Product } from './schemas/products.schema';
 import { PremiumService } from './premium.service';
 
@@ -7,7 +7,7 @@ export class PremiumController {
 	constructor (private readonly productService:PremiumService) {}
 
 	@Get()
-	getProducts():Promise<Product[]>{
+	async getProducts():Promise<Product[]>{
 		return this.productService.getProducts();
 	}
 }

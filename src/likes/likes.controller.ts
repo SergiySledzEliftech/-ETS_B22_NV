@@ -9,7 +9,7 @@ export class LikesController{
 	constructor(private readonly  likesService: LikesService) {}
 
 	@Get()
-	getLike(@Query('commentId') commentId: string,
+	async getLike(@Query('commentId') commentId: string,
 			@Query('userId') userId: string
 	): Promise<Like> {
 		return this.likesService.checkLike(commentId, userId);
@@ -17,12 +17,12 @@ export class LikesController{
 
 	@Post()
 	@HttpCode(HttpStatus.CREATED)
-	createLike(@Body() createLikeDto: CreateLikeDto): Promise<Like> {
+	async createLike(@Body() createLikeDto: CreateLikeDto): Promise<Like> {
 		return this.likesService.createLike(createLikeDto);
 	}
 
 	@Put(':id')
-	updateLike(@Body() updateLikeDto: UpdateLikeDto, @Param('id') id: string): Promise<Like> {
+	async updateLike(@Body() updateLikeDto: UpdateLikeDto, @Param('id') id: string): Promise<Like> {
 		return this.likesService.updateLike(id, updateLikeDto);
 	}
 

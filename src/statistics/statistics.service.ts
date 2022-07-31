@@ -17,7 +17,7 @@ export class StatisticsService {
 	}
 
 	async updateStatistics(route: string): Promise<Statistics> {
-		const statistics = await this.statisticsModel.findOne({date: (new Date()).setHours(0, 0, 0, 0)});
+		const statistics = this.statisticsModel.findOne({date: (new Date()).setHours(0, 0, 0, 0)});
 		if(statistics === null){
 			const newArticle = new this.statisticsModel({
 				date: (new Date()).setHours(0, 0, 0, 0),
@@ -42,7 +42,7 @@ export class StatisticsService {
 				return this.statisticsModel.findByIdAndUpdate(id, currentDbCondition, {new:true});
 			case 'update-items-rented':
 				currentDbCondition.itemsRented = updateStatisticsField(currentDbCondition.itemsRented);
-				return this.statisticsModel.findByIdAndUpdate(id, currentDbCondition, {new:true});  
+				return this.statisticsModel.findByIdAndUpdate(id, currentDbCondition, {new:true});
 			default :
 				throw new BadRequestException('Invalid route');
 		}

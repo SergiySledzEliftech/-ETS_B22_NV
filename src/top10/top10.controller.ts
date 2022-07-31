@@ -7,7 +7,7 @@ export class Top10Controller {
 	constructor (private readonly productService:Top10Service) {}
 
 	@Get()
-	getProducts():Promise<Product[]>{
+	async getProducts():Promise<Product[]>{
 		return this.productService.getProducts();
 	}
 }
