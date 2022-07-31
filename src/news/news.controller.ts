@@ -1,7 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { NewsService } from './news.service';
 import { News } from './schemas/news.schema';
+import {Public} from '../auth/auth.controller';
 
+@Public()
 @Controller('news')
 export class NewsController {
 	constructor(private readonly newsService : NewsService){}
