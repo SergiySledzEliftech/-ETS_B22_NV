@@ -12,7 +12,7 @@ export class UsersService {
 
   async create(firstName: string,
 				lastName: string,
-				phone: number,
+				phone: string,
 				email: string,
 				hashedPassword: string
 				): Promise<User> {
