@@ -1,15 +1,15 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type PartnersDocument = Partner & Document
+export type PartnersDocument = Partner & Document;
 
 @Schema()
 export class Partner {
-    @Prop()
-    name:string
+	@Prop()
+	name:string;
 
-    @Prop()
-    img: string
+	@Prop()
+	img: string;
 }
 
-export const PartnerSchema = SchemaFactory.createForClass(Partner)
+export const PartnerSchema = SchemaFactory.createForClass(Partner);

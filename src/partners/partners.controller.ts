@@ -6,10 +6,10 @@ import {Public} from '../auth/auth.controller';
 @Public()
 @Controller('partners')
 export class PartnersController {
-    constructor(private readonly partnersService:PartnersService) {}
+	constructor(private readonly partnersService:PartnersService) {}
 
-    @Get()
-    getAllPartners():Promise<Partner[]>{
-        return this.partnersService.getAllPartners()
-    }
+	@Get()
+	getAllPartners():Promise<Partner[]>{
+		return this.partnersService.getAllPartners();
+	}
 }
