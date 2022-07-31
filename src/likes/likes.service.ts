@@ -23,4 +23,7 @@ export class LikesService{
 	async removeLike(id: string): Promise<Like> {
 		return this.likeModel.findByIdAndRemove(id);
 	}
+	async removeCommentLikes(commentId): Promise<Like[]> {
+		return this.likeModel.remove({ commentId: commentId}).exec();
+	}
 }
