@@ -20,7 +20,7 @@ export class StatisticsService {
 		const statistics = await this.statisticsModel.findOne({date: changeTimeZone((new Date())).setHours(0, 0, 0, 0)});
 		if(statistics === null){
 			const newArticle = new this.statisticsModel({
-				date: (new Date()).setHours(0, 0, 0, 0),
+				date: changeTimeZone((new Date())).setHours(0, 0, 0, 0),
 				users: [0, 0, 0, 0, 0, 0],
 				itemsCreated: [0, 0, 0, 0, 0, 0],
 				itemsRented: [0, 0, 0, 0, 0, 0]
