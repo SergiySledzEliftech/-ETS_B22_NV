@@ -27,7 +27,8 @@ export class SearchController {
 	}
 
 	@Get('/categories')
-	async findAllCategories(): Promise<Category[]> {
+
+	async findAllCategories(): Promise<string[]> {
 		return this.searchService.getAllCategories();
 	}
 
