@@ -1,7 +1,6 @@
 import {Prop, raw, Schema, SchemaFactory} from '@nestjs/mongoose';
 import {Document} from 'mongoose';
 
-
 export type ProductsDocument = Products & Document;
 
 @Schema()
@@ -35,8 +34,7 @@ export class Products {
 		nickname: { type: String },
 		avatar: { type: String }
 	}))
-		// tslint:disable-next-line:no-any
-	leaser_info: Record<string, any>;
+	leaser_info: Record<string, {}>;
 	@Prop()
 	status:string;
 	@Prop()

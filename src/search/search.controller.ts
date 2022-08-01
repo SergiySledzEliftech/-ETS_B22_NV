@@ -1,7 +1,6 @@
 import {Body, Controller, Get, Post, Query} from '@nestjs/common';
 import {SearchService} from './search.service';
 import {Products} from './schemas/products.schema';
-import {Category} from './schemas/categories.schema';
 import {Options} from './interfaces/options.interface';
 import {Public} from '../auth/auth.controller';
 
@@ -27,8 +26,8 @@ export class SearchController {
 	}
 
 	@Get('/categories')
-	async findAllCategories(): Promise<Category[]> {
+
+	async findAllCategories(): Promise<string[]> {
 		return this.searchService.getAllCategories();
 	}
-
 }
