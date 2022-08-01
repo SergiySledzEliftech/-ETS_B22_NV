@@ -43,4 +43,8 @@ export class SearchService {
 		)
 	}
 
+	async deleteProduct(id): Promise<Products[]> {
+		return this.productModel.findByIdAndRemove(id)
+	}
+
 }

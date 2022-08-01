@@ -2,7 +2,9 @@ import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post
 import {FavoritesService} from './favorites.service';
 import {Favorites} from './schemas/favorites.schema';
 import {FavoriteDto} from './dto/favorites.dto';
+import { Public } from 'src/auth/auth.controller';
 
+@Public()
 @Controller('favorites')
 export class FavoritesController{
     constructor(private readonly favoritesService: FavoritesService) {}
