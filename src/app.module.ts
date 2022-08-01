@@ -16,6 +16,7 @@ import { SearchModule} from './search/search.module';
 import { UsersModule } from './users/users.module';
 import { GoodModule } from './good/good.module';
 import { CommentsModule } from './comments/comments.module';
+import { FavoritesModule } from './favorites/favorites.module';
 import { LikesModule} from './likes/likes.module';
 
 @Module({
@@ -23,6 +24,7 @@ import { LikesModule} from './likes/likes.module';
 		NewsModule,
 		UsersModule,
 		GoodModule,
+		FavoritesModule,
 		CommentsModule,
 		LikesModule,
 		ConfigModule.forRoot(),
