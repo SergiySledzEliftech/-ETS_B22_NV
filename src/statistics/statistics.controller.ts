@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Put } from '@nestjs/common';
+import { Controller, Get, Param, Put, Query } from '@nestjs/common';
 import { Statistics } from './schemas/statistics.schema';
 import { StatisticsService } from './statistics.service';
 import {Public} from '../auth/auth.controller';
@@ -18,8 +18,8 @@ export class StatisticsController {
 		return this.statisticsService.getOneStatistics(date);
 	}
 
-	@Put(':route')
-	async updateArticle(@Param('route') route:string){
-		return this.statisticsService.updateStatistics(route);
+	@Put(':field')
+	async updateArticle(@Param('field') field:string){
+		return this.statisticsService.updateStatistics(field);
 	}
 }
