@@ -66,7 +66,7 @@ export class UsersService {
 	async update(id: string, userDto: UpdateUserDto): Promise<string> {
 	  try {
 		  await this.userModel.findByIdAndUpdate(id, userDto, {new: true});
-		  return 'Data saved';
+		  return 'User data saved';
 	  } catch (e) {
 		  return e;
 	  }
@@ -75,7 +75,7 @@ export class UsersService {
 	async updateAvatar(id: string, userAvatarDto: UpdateUserAvatarDto): Promise<string> {
 		try {
 			await this.userModel.findByIdAndUpdate(id, userAvatarDto, {new: true});
-			return 'Data saved';
+			return 'Avatar saved';
 		} catch (e) {
 			return e;
 		}
@@ -88,7 +88,7 @@ export class UsersService {
 			const hashedNewPass: string = await bcrypt.hash(userPassDto.newPass, 12);
 			try {
 				await this.userModel.findByIdAndUpdate(id, { passHash: hashedNewPass }, {new: true});
-				return `Saved`;
+				return `Password changed`;
 			} catch (e) {
 				return 'Error:' + e;
 			}
