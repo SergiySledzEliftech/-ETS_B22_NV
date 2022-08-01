@@ -10,8 +10,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
 	// tslint:disable-next-line:no-any
-  async validate(email: string, passHash: string): Promise<any> {
-	const user = await this.authService.validateUser(email, passHash);
+  async validate(email: string): Promise<any> {
+	const user = await this.authService.validateUser(email);
 	if (!user) {
 		throw new UnauthorizedException();
 	}
