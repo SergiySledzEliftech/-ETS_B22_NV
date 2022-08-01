@@ -16,8 +16,8 @@ export class StatisticsService {
 		return this.statisticsModel.findOne({date:dateProp});
 	}
 
-	async updateStatistics(route: string): Promise<Statistics> {
-		const statistics = this.statisticsModel.findOne({date: (new Date()).setHours(0, 0, 0, 0)});
+	async updateStatistics(field: string): Promise<Statistics> {
+		const statistics = await this.statisticsModel.findOne({date: changeTimeZone((new Date())).setHours(0, 0, 0, 0)});
 		if(statistics === null){
 			const newArticle = new this.statisticsModel({
 				date: (new Date()).setHours(0, 0, 0, 0),
@@ -28,23 +28,19 @@ export class StatisticsService {
 			await newArticle.save();
 		}
 
-		const currentDbCondition = await this.statisticsModel.findOne({date:(new Date()).setHours(0, 0, 0, 0)});
+		const currentDbCondition = await this.statisticsModel.findOne({date:changeTimeZone((new Date())).setHours(0, 0, 0, 0)});
 		const id = currentDbCondition._id;
-		delete currentDbCondition._id;
-		delete currentDbCondition.__v;
 
-		switch (route){
-			case 'update-users':
+		switch (field){
+			case 'users':
 				currentDbCondition.users = updateStatisticsField(currentDbCondition.users);
 				return this.statisticsModel.findByIdAndUpdate(id, currentDbCondition, {new:true});
-			case 'update-items-created':
+			case 'itemsCreated':
 				currentDbCondition.itemsCreated = updateStatisticsField(currentDbCondition.itemsCreated);
 				return this.statisticsModel.findByIdAndUpdate(id, currentDbCondition, {new:true});
-			case 'update-items-rented':
+			case 'itemsRented':
 				currentDbCondition.itemsRented = updateStatisticsField(currentDbCondition.itemsRented);
 				return this.statisticsModel.findByIdAndUpdate(id, currentDbCondition, {new:true});
-			default :
-				throw new BadRequestException('Invalid route');
 		}
 
 		function updateStatisticsField (field) {
@@ -52,5 +48,16 @@ export class StatisticsService {
 			field[index] ++;
 			return field;
 		}
+
+		function changeTimeZone(date) {
+			const timeZone = 'Europe/Kiev';
+			date = new Date(date);
+
+			return new Date(
+			date.toLocaleString('en-US', {
+				timeZone
+			})
+			);
+		  }
 	}
 }
