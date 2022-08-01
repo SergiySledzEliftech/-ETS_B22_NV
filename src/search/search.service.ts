@@ -32,4 +32,16 @@ export class SearchService {
 		return this.productModel.find(options).exec();
 	}
 
+	async getProductsByUser(param): Promise<Products[]> {
+		return this.productModel.find(
+			{'leaser_info.userId': param}
+		)
+	}
+
+	async getLentProductsByUser(id): Promise<Products[]> {
+		return this.productModel.find(
+			{'leaser_info.userId': id, 'status': 'unavailable'}
+		)
+	}
+
 }

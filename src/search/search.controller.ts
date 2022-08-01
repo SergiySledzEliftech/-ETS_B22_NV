@@ -31,4 +31,15 @@ export class SearchController {
 		return this.searchService.getAllCategories();
 	}
 
+	@Get('/ads')
+	async getProductsByUser(@Query('id') id: string) {
+		return this.searchService.getProductsByUser(id);
+	}
+
+	@Get('/lent')
+	async getLentProductsByUser(@Query('id') id: string) {
+		console.log(id);
+		return this.searchService.getLentProductsByUser(id);
+	}
+
 }
