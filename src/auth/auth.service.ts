@@ -78,10 +78,9 @@ export class AuthService {
 
 	// tslint:disable-next-line:no-any
 		async refreshToken(req: any) {
-			const payloadRt = this.jwtService.decode(req.refresh_token);
-			const str = JSON.stringify(payloadRt);
-			const parsedStr = JSON.parse(str);
-			const user = await this.usersService.findByRefreshTokenId(parsedStr.refreshTokenId);
+			// tslint:disable-next-line:no-any
+			const payloadRt = this.jwtService.decode(req.refresh_token) as { [key: string]: any;};
+			const user = await this.usersService.findByRefreshTokenId(payloadRt.refreshTokenId);
 			const payloadAt = { username: user.email, sub: user._id };
 			const res = await this.issueTokenPair(payloadAt);
 			return res;
