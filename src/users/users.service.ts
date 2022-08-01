@@ -5,6 +5,7 @@ import { User, UserDocument } from './schemas/user.schema';
 import * as bcrypt from 'bcrypt';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserPassDto } from './dto/update-user-pass.dto';
+import {UpdateUserAvatarDto} from './dto/update-user-avatar.dto';
 
 @Injectable()
 export class UsersService {
@@ -69,6 +70,15 @@ export class UsersService {
 	  } catch (e) {
 		  return e;
 	  }
+	}
+
+	async updateAvatar(id: string, userAvatarDto: UpdateUserAvatarDto): Promise<string> {
+		try {
+			await this.userModel.findByIdAndUpdate(id, userAvatarDto, {new: true});
+			return 'Data saved';
+		} catch (e) {
+			return e;
+		}
 	}
 
 	async updatePass(id: string, userPassDto: UpdateUserPassDto): Promise<Promise<User> | string>  {

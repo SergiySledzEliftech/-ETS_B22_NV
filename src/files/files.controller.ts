@@ -2,14 +2,16 @@ import { Controller, Get, Post,UseInterceptors, UploadedFile, UploadedFiles, Res
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import {editFileName, editProfileFileName, imageFileFilter} from '../utils/file-upload.utils';
+import {Public} from '../auth/auth.controller';
 
 @Controller('files')
 export class FilesController {
 	constructor() {}
 	// upload single file
 	@Post(':id')
+	@Public()
 	@UseInterceptors(
-		FileInterceptor('avatarUpload', {
+		FileInterceptor('avatarUploader', {
 			storage: diskStorage({
 				destination: './public/profiles',
 				filename: editProfileFileName,
@@ -18,9 +20,11 @@ export class FilesController {
 		}),
 	)
 	async uploadedFile(@UploadedFile() file, @Param('id') id ) {
+		// tslint:disable-next-line:no-console
+		console.log(await file);
 		const response = {
-			originalname: file.originalname,
-			filename: file.filename,
+			originalname: await file.originalname,
+			filename: await file.filename,
 		};
 		return {
 			status: HttpStatus.OK,
@@ -56,6 +60,7 @@ export class FilesController {
 	}
 
 	@Get(':imagename')
+	@Public()
 	getImage(@Param('imagename') image, @Res() res) {
 		const response = res.sendFile(image, { root: './public/profiles' });
 		return {
