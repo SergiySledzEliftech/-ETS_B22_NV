@@ -44,7 +44,7 @@ export class StatisticsService {
 		}
 
 		function updateStatisticsField (field) {
-			const index = Math.floor((new Date()).getHours()/4);
+			const index = Math.floor(changeTimeZone((new Date())).getHours()/4);
 			field[index] ++;
 			return field;
 		}
