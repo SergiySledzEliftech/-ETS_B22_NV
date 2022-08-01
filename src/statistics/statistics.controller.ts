@@ -18,8 +18,8 @@ export class StatisticsController {
 		return this.statisticsService.getOneStatistics(date);
 	}
 
-	@Put(':route')
-	async updateArticle(@Param('route') route:string){
-		return this.statisticsService.updateStatistics(route);
+	@Put(':field')
+	async updateArticle(@Param('field') field:string){
+		return this.statisticsService.updateStatistics(field);
 	}
 }

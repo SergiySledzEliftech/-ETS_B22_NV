@@ -1,13 +1,24 @@
+import {IsEmail, IsNotEmpty, IsInt, IsString} from 'class-validator';
+
 export class UpdateUserDto {
+	@IsNotEmpty()
 	readonly firstName: string;
+
+	@IsNotEmpty()
 	readonly lastName: string;
+
 	readonly nickname: string;
+
 	readonly about: string;
-	readonly avatar: string;
+
+	@IsEmail()
+	@IsNotEmpty()
 	readonly email: string;
-	readonly phone: string;
+
+	@IsInt()
+	readonly phone: number;
+
 	readonly optionalPhone: string;
+
 	readonly location: string;
-	readonly rating: number;
-	// readonly passHash: string;
 }
