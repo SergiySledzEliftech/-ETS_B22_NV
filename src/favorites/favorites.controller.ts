@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post, Put, Query} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Header, HttpCode, HttpStatus, Param, Post, Query} from '@nestjs/common';
 import {FavoritesService} from './favorites.service';
 import {Favorites} from './schemas/favorites.schema';
 import {FavoriteDto} from './dto/favorites.dto';
@@ -10,9 +10,9 @@ export class FavoritesController{
     constructor(private readonly favoritesService: FavoritesService) {}
 
     @Get()
-    GetFavorites(@Query('userId') userId: string):
+    GetFavorites(@Query('user') user: string):
     Promise<Favorites[]> {
-        return this.favoritesService.GetFavorites(userId);
+        return this.favoritesService.GetFavorites(user);
     }
 
     @Post()
@@ -26,5 +26,10 @@ export class FavoritesController{
     @Delete(':id')
     remove(@Param('id') id: string): Promise<Favorites> {
         return this.favoritesService.DeleteFromFavorites(id)
+    }
+
+    @Get('isfav')
+    isFavorite(@Query('id') id: string, @Query('user') user: string): Promise<Favorites[]> {
+        return this.favoritesService.isFavorite(id, user)
     }
 }
