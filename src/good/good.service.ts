@@ -19,8 +19,8 @@ export class GoodService {
 			_id : { $ne: id},
 			category: category,
 			status: status,
-			price: {$gte: min, $lte: max},
-			rating: {$gte: minRating}
+			$or: [{price: {$gte: min, $lte: max}}, { isFree: true}],
+			rating: {$gte: minRating},
 		}).limit(3).exec();
 	}
 }

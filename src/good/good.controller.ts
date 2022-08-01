@@ -26,7 +26,7 @@ export class GoodController {
 		@Query('min') min: number,
 		@Query('max') max: number,
 		@Query('status') status: string,
-		@Query('minRating') minRating: number,
+		@Query('minRating') minRating: number
 		): Promise<Product[]> {
 		return this.goodService.getGoodRecommendations(id, category, min, max, status, minRating);
 	}
