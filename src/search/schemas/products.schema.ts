@@ -6,8 +6,6 @@ export type ProductsDocument = Products & Document;
 
 @Schema()
 export class Products {
-	// @Prop()
-	// _id: object;
 	@Prop()
 	title: string;
 	@Prop()
@@ -50,8 +48,10 @@ export class Products {
 	location:string;
 	@Prop()
 	date_created:string;
-	// @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: Category.name }] })
-	// category: any;
+	@Prop()
+	sellerStatus:string;
+	@Prop()
+	isContractPrice:boolean;
 }
 
 export const ProductsSchema = SchemaFactory.createForClass(Products);
