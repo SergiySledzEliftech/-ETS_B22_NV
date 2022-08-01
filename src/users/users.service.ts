@@ -5,6 +5,7 @@ import { User, UserDocument } from './schemas/user.schema';
 import * as bcrypt from 'bcrypt';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserPassDto } from './dto/update-user-pass.dto';
+import {UpdateUserAvatarDto} from './dto/update-user-avatar.dto';
 
 @Injectable()
 export class UsersService {
@@ -62,8 +63,22 @@ export class UsersService {
 		return this.userModel.findById(id);
 	}
 
-	async update(id: string, userDto: UpdateUserDto): Promise<User> {
-		return this.userModel.findByIdAndUpdate(id, userDto, {new: true});
+	async update(id: string, userDto: UpdateUserDto): Promise<string> {
+	  try {
+		  await this.userModel.findByIdAndUpdate(id, userDto, {new: true});
+		  return 'Data saved';
+	  } catch (e) {
+		  return e;
+	  }
+	}
+
+	async updateAvatar(id: string, userAvatarDto: UpdateUserAvatarDto): Promise<string> {
+		try {
+			await this.userModel.findByIdAndUpdate(id, userAvatarDto, {new: true});
+			return 'Data saved';
+		} catch (e) {
+			return e;
+		}
 	}
 
 	async updatePass(id: string, userPassDto: UpdateUserPassDto): Promise<Promise<User> | string>  {
@@ -71,7 +86,12 @@ export class UsersService {
 
 		if(await bcrypt.compare(userPassDto.oldPass, userOldPassHashFromBD)){
 			const hashedNewPass: string = await bcrypt.hash(userPassDto.newPass, 12);
-			return this.userModel.findByIdAndUpdate(id, { passHash: hashedNewPass }, {new: true});
+			try {
+				await this.userModel.findByIdAndUpdate(id, { passHash: hashedNewPass }, {new: true});
+				return `Saved`;
+			} catch (e) {
+				return 'Error:' + e;
+			}
 		} else {
 			return 'Sorry. Old pass failed';
 		}
