@@ -60,7 +60,7 @@ export class UsersService {
 	return user;
   }
 	async getById(id: string): Promise<User> {
-		return this.userModel.findById(id);
+		return this.userModel.findById(id, 'firstName lastName nickname about avatar email phone optionalPhone location rating');
 	}
 
 	async update(id: string, userDto: UpdateUserDto): Promise<string> {
@@ -82,7 +82,7 @@ export class UsersService {
 	}
 
 	async updatePass(id: string, userPassDto: UpdateUserPassDto): Promise<Promise<User> | string>  {
-		const userOldPassHashFromBD: string = (await this.getById(id)).passHash;
+		const userOldPassHashFromBD: string = (await this.userModel.findById(id)).passHash;
 
 		if(await bcrypt.compare(userPassDto.oldPass, userOldPassHashFromBD)){
 			const hashedNewPass: string = await bcrypt.hash(userPassDto.newPass, 12);
