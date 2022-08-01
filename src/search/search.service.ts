@@ -22,8 +22,7 @@ export class SearchService {
 		);
 	}
 
-	// tslint:disable-next-line:no-any
-	async getAllCategories(): Promise<any[]> {
+	async getAllCategories(): Promise<string[]> {
 		const categories = await this.categoryModel.find();
 		return categories.map(({category})=>category);
 	}

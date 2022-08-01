@@ -15,7 +15,5 @@ import {Category, CategorySchema} from './schemas/categories.schema';
 	controllers: [SearchController],
 	providers: [SearchService]
 })
-export class SearchModule{
-
-}
+export class SearchModule{}
 
