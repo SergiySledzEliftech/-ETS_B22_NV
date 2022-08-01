@@ -22,13 +22,14 @@ export class SearchService {
 		);
 	}
 
+	// tslint:disable-next-line:no-any
 	async getAllCategories(): Promise<any[]> {
 		const categories = await this.categoryModel.find();
 		return categories.map(({category})=>category);
 	}
 
 	async getFilterProducts(options):Promise<Products[]>{
-		return this.productModel.find(options);
+		return this.productModel.find(options).exec();
 	}
 
 }

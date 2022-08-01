@@ -5,9 +5,9 @@ import { Partner, PartnersDocument } from './scemas/partners.schema';
 
 @Injectable()
 export class PartnersService {
-    constructor(@InjectModel(Partner.name) private partnersModel:Model<PartnersDocument>){}
+	constructor(@InjectModel(Partner.name) private partnersModel:Model<PartnersDocument>){}
 
-    async getAllPartners():Promise<Partner[]> {
-        return this.partnersModel.find().exec()
-    }
+	async getAllPartners():Promise<Partner[]> {
+		return this.partnersModel.find().exec();
+	}
 }

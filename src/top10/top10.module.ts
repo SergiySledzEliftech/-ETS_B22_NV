@@ -6,7 +6,7 @@ import { Top10Service } from './top10.service';
 
 @Module({
   imports: [MongooseModule.forFeature([
-    {name:Product.name, schema:ProductSchema}
+	{name:Product.name, schema:ProductSchema}
   ])],
   providers: [Top10Service],
   controllers: [Top10Controller]
