@@ -31,7 +31,4 @@ export class UpdateUserDto {
 
 	@IsString()
 	readonly location: string;
-
-	// readonly rating: number;
-	// readonly passHash: string;
 }
