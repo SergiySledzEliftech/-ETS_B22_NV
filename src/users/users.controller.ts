@@ -3,6 +3,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
 import {UpdateUserPassDto} from './dto/update-user-pass.dto';
+import {Public} from '../auth/auth.controller';
 
 @Controller('users')
 export class UsersController {
@@ -16,6 +17,7 @@ export class UsersController {
 		return this.usersService.findAll();
 	}
 
+	@Public()
 	@Get(':id')
 	async getUser(@Param('id') id): Promise<User> {
 		return this.usersService.getById(id);
