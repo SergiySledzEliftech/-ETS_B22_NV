@@ -27,5 +27,4 @@ export class SearchController {
 	async findAllCategories(): Promise<string[]> {
 		return this.searchService.getAllCategories();
 	}
-
 }

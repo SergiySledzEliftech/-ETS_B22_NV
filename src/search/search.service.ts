@@ -30,5 +30,4 @@ export class SearchService {
 	async getFilterProducts(options):Promise<Products[]>{
 		return this.productModel.find(options).exec();
 	}
-
 }
