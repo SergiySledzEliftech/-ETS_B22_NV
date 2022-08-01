@@ -22,7 +22,7 @@ export class SearchService {
 		);
 	}
 
-	async getAllCategories(): Promise<any[]> {
+	async getAllCategories(): Promise<string[]> {
 		const categories = await this.categoryModel.find();
 		return categories.map(({category})=>category);
 	}
