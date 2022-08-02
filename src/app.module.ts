@@ -18,13 +18,10 @@ import { SearchModule} from './search/search.module';
 import { UsersModule } from './users/users.module';
 import { GoodModule } from './good/good.module';
 import { CommentsModule } from './comments/comments.module';
-<<<<<<< HEAD
 import { LikesModule } from './likes/likes.module';
 import { PaymentsModule } from './payments/payments.module';
-=======
 import { FavoritesModule } from './favorites/favorites.module';
-import { LikesModule} from './likes/likes.module';
->>>>>>> dev
+
 
 @Module({
 	imports: [
@@ -44,15 +41,11 @@ import { LikesModule} from './likes/likes.module';
 		UsersModule,
 		PartnersModule,
 		SearchModule,
-<<<<<<< HEAD
 		PaymentsModule,
-		PaymentsModule,
-=======
 		MulterModule.register({
 			dest: './uploads',
 		}),
 		FilesModule
->>>>>>> dev
 	],
 	controllers: [
 		AppController,
