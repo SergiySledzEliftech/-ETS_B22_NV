@@ -3,18 +3,20 @@ import {CommentsService} from './comments.service';
 import {Comment} from './schemas/comments.schema';
 import {CreateCommentDto} from './dto/create-comment.dto';
 import {UpdateCommentDto} from './dto/update-comment.dto';
+import {Public} from '../auth/auth.controller';
 
+@Public()
 @Controller('comments')
 export class CommentsController{
 	constructor(private readonly commentsService: CommentsService) {}
 
 	@Get()
-	getAllComments(@Query('goodId') goodId: string): Promise<Comment[]> {
+	async getAllComments(@Query('goodId') goodId: string): Promise<Comment[]> {
 		return this.commentsService.getAllComments(goodId);
 	}
 
 	@Get('/my')
-	getUserComments(
+	async getUserComments(
 		@Query('userId') userId: string,
 		@Query('goodId') goodId: string
 	): Promise<Comment[]> {
@@ -24,17 +26,17 @@ export class CommentsController{
 	@Post()
 	@HttpCode(HttpStatus.CREATED)
 	@Header('Cache-Control', 'none')
-	createComment(@Body() createCommentDTO: CreateCommentDto): Promise<Comment>{
+	async createComment(@Body() createCommentDTO: CreateCommentDto): Promise<Comment>{
 		return this.commentsService.createComment(createCommentDTO);
 	}
 
 	@Delete(':id')
-	remove(@Param('id') id: string): Promise<Comment>{
+	async remove(@Param('id') id: string): Promise<Comment>{
 		return this.commentsService.remove(id);
 	}
 
 	@Put(':id')
-	updateComment(@Body() updateCommentDto: UpdateCommentDto, @Param('id') id: string): Promise<Comment> {
+	async updateComment(@Body() updateCommentDto: UpdateCommentDto, @Param('id') id: string): Promise<Comment> {
 		return this.commentsService.updateComment(id, updateCommentDto);
 	}
 }

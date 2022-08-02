@@ -13,7 +13,7 @@ import { APP_GUARD } from '@nestjs/core';
 @Module({
   imports: [UsersModule, PassportModule, JwtModule.register({
 		secret: jwtConstants.secret,
-		signOptions: { expiresIn: '3600s' },
+		signOptions: { expiresIn: '3h' },
   }),],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy, { provide: APP_GUARD, useClass: JwtAuthGuard }

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Query} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, Delete} from '@nestjs/common';
 import {SearchService} from './search.service';
 import {Products} from './schemas/products.schema';
 import {Category} from './schemas/categories.schema';
@@ -21,14 +21,29 @@ export class SearchController {
 		return this.searchService.findAllProducts();
 	}
 
-	@Get('filter')
+	@Post('filter')
 	async filterProducts(@Body() options:Options): Promise<Products[]> {
 		return this.searchService.getFilterProducts(options);
 	}
 
 	@Get('/categories')
-	findAllCategories(): Promise<Category[]> {
+
+	async findAllCategories(): Promise<string[]> {
 		return this.searchService.getAllCategories();
 	}
 
+	@Get('items')
+	async getProductsByUser(@Query('id') id: string) {
+		return this.searchService.getProductsByUser(id);
+	}
+
+	@Get('lent')
+	async getLentProductsByUser(@Query('id') id: string) {
+		return this.searchService.getLentProductsByUser(id);
+	}
+
+	@Delete(':id')
+	async deleteProduct(@Param('id') id: string) {
+		return this.searchService.deleteProduct(id);
+	}
 }

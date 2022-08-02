@@ -22,13 +22,29 @@ export class SearchService {
 		);
 	}
 
-	async getAllCategories(): Promise<any[]> {
+	async getAllCategories(): Promise<string[]> {
 		const categories = await this.categoryModel.find();
 		return categories.map(({category})=>category);
 	}
 
 	async getFilterProducts(options):Promise<Products[]>{
-		return this.productModel.find(options);
+		return this.productModel.find(options).exec();
+	}
+
+	async getProductsByUser(param): Promise<Products[]> {
+		return this.productModel.find(
+			{'leaser_info.userId': param}
+		)
+	}
+
+	async getLentProductsByUser(id): Promise<Products[]> {
+		return this.productModel.find(
+			{'leaser_info.userId': id, 'status': 'unavailable'}
+		)
+	}
+
+	async deleteProduct(id): Promise<Products[]> {
+		return this.productModel.findByIdAndRemove(id)
 	}
 
 }
