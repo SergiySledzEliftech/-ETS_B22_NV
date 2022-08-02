@@ -34,17 +34,17 @@ export class SearchService {
 	async getProductsByUser(param): Promise<Products[]> {
 		return this.productModel.find(
 			{'leaser_info.userId': param}
-		)
+		);
 	}
 
 	async getLentProductsByUser(id): Promise<Products[]> {
 		return this.productModel.find(
 			{'leaser_info.userId': id, 'status': 'unavailable'}
-		)
+		);
 	}
 
 	async deleteProduct(id): Promise<Products[]> {
-		return this.productModel.findByIdAndRemove(id)
+		return this.productModel.findByIdAndRemove(id);
 	}
 
 }

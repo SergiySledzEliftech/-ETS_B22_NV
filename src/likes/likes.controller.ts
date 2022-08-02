@@ -11,7 +11,8 @@ export class LikesController{
 	constructor(private readonly  likesService: LikesService) {}
 
 	@Get()
-	async getLike(@Query('commentId') commentId: string,
+	async getLike(
+			@Query('commentId') commentId: string,
 			@Query('userId') userId: string
 	): Promise<Like> {
 		return this.likesService.checkLike(commentId, userId);

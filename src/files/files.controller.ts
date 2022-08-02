@@ -1,5 +1,5 @@
-import { Controller, Get, Post,UseInterceptors, UploadedFile, UploadedFiles, Res, Param, HttpStatus } from '@nestjs/common';
-import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { Controller, Get, Post,UseInterceptors, UploadedFile, Res, Param, HttpStatus } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editProfileFileName, imageFileFilter } from '../utils/file-upload.utils';
 import { Public } from '../auth/auth.controller';

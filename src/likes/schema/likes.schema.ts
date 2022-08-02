@@ -9,7 +9,7 @@ export type LikeDocument = Like & Document;
 export class Like{
 	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}) commentId: Comment;
 	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User'}) userId: User;
-	@Prop() like: boolean;
+	@Prop({default: null}) like: boolean;
 }
 
 export const LikesSchema = SchemaFactory.createForClass(Like);
