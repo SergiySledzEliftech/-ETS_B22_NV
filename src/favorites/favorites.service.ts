@@ -8,8 +8,8 @@ import {FavoriteDto} from './dto/favorites.dto';
 export class FavoritesService{
     constructor(@InjectModel(Favorites.name) private favoritesModel: Model<FavoritesDocument>) {}
 
-    async GetFavorites(userId: string): Promise<Favorites[]> {
-        return this.favoritesModel.find({'userId': userId})
+    async GetFavorites(user: string): Promise<Favorites[]> {
+        return this.favoritesModel.find({'userId': user})
     };
 
     async AddToFavorites(favoriteDto: FavoriteDto): Promise<Favorites> {
@@ -20,5 +20,9 @@ export class FavoritesService{
     async DeleteFromFavorites(id: string): Promise<Favorites> {
         return this.favoritesModel.
         findByIdAndRemove(id);
+    };
+
+    async isFavorite(id: string, userId: string): Promise<Favorites[]> {
+        return this.favoritesModel.find({'userId': userId, 'item._id': id})
     }
 }

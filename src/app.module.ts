@@ -18,8 +18,10 @@ import { SearchModule} from './search/search.module';
 import { UsersModule } from './users/users.module';
 import { GoodModule } from './good/good.module';
 import { CommentsModule } from './comments/comments.module';
+import { LikesModule } from './likes/likes.module';
+import { PaymentsModule } from './payments/payments.module';
 import { FavoritesModule } from './favorites/favorites.module';
-import { LikesModule} from './likes/likes.module';
+
 
 @Module({
 	imports: [
@@ -39,6 +41,7 @@ import { LikesModule} from './likes/likes.module';
 		UsersModule,
 		PartnersModule,
 		SearchModule,
+		PaymentsModule,
 		MulterModule.register({
 			dest: './uploads',
 		}),
