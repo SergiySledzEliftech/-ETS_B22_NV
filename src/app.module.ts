@@ -12,18 +12,26 @@ import { StatisticsModule } from './statistics/statistics.module';
 import { Top10Module } from './top10/top10.module';
 import { PremiumModule } from './premium/premium.module';
 import { PartnersModule } from './partners/partners.module';
+import { FilesModule } from './files/files.module';
+import { MulterModule } from '@nestjs/platform-express';
 import { SearchModule} from './search/search.module';
 import { UsersModule } from './users/users.module';
 import { GoodModule } from './good/good.module';
 import { CommentsModule } from './comments/comments.module';
+<<<<<<< HEAD
 import { LikesModule } from './likes/likes.module';
 import { PaymentsModule } from './payments/payments.module';
+=======
+import { FavoritesModule } from './favorites/favorites.module';
+import { LikesModule} from './likes/likes.module';
+>>>>>>> dev
 
 @Module({
 	imports: [
 		NewsModule,
 		UsersModule,
 		GoodModule,
+		FavoritesModule,
 		CommentsModule,
 		LikesModule,
 		ConfigModule.forRoot(),
@@ -36,8 +44,15 @@ import { PaymentsModule } from './payments/payments.module';
 		UsersModule,
 		PartnersModule,
 		SearchModule,
+<<<<<<< HEAD
 		PaymentsModule,
 		PaymentsModule,
+=======
+		MulterModule.register({
+			dest: './uploads',
+		}),
+		FilesModule
+>>>>>>> dev
 	],
 	controllers: [
 		AppController,
