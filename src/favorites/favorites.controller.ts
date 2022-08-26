@@ -7,22 +7,31 @@ import { Public } from 'src/auth/auth.controller';
 @Public()
 @Controller('favorites')
 export class FavoritesController{
-    constructor(private readonly favoritesService: FavoritesService) {}
+	constructor(private readonly favoritesService: FavoritesService) {}
 
+<<<<<<< HEAD
     @Get()
     GetFavorites(@Query('user') user: string):
     Promise<Favorites[]> {
         return this.favoritesService.GetFavorites(user);
     }
+=======
+	@Get()
+	GetFavorites(@Query('userId') userId: string):
+	Promise<Favorites[]> {
+		return this.favoritesService.GetFavorites(userId);
+	}
+>>>>>>> Oleg
 
-    @Post()
-    @HttpCode(HttpStatus.CREATED)
+	@Post()
+	@HttpCode(HttpStatus.CREATED)
 	@Header('Cache-Control', 'none')
-    AddToFavorites(@Body() FavoriteDTO: FavoriteDto):
-    Promise<Favorites>{
-        return this.favoritesService.AddToFavorites(FavoriteDTO)
-    }
+	AddToFavorites(@Body() FavoriteDTO: FavoriteDto):
+	Promise<Favorites>{
+		return this.favoritesService.AddToFavorites(FavoriteDTO);
+	}
 
+<<<<<<< HEAD
     @Delete(':id')
     remove(@Param('id') id: string): Promise<Favorites> {
         return this.favoritesService.DeleteFromFavorites(id)
@@ -32,4 +41,10 @@ export class FavoritesController{
     isFavorite(@Query('id') id: string, @Query('user') user: string): Promise<Favorites[]> {
         return this.favoritesService.isFavorite(id, user)
     }
+=======
+	@Delete(':id')
+	remove(@Param('id') id: string): Promise<Favorites> {
+		return this.favoritesService.DeleteFromFavorites(id);
+	}
+>>>>>>> Oleg
 }

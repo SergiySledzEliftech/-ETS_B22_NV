@@ -21,7 +21,12 @@ import { CommentsModule } from './comments/comments.module';
 import { LikesModule } from './likes/likes.module';
 import { PaymentsModule } from './payments/payments.module';
 import { FavoritesModule } from './favorites/favorites.module';
+<<<<<<< HEAD
 
+=======
+import { LikesModule} from './likes/likes.module';
+import { OrdersModule } from './orders/orders.module';
+>>>>>>> Oleg
 
 @Module({
 	imports: [
@@ -31,6 +36,7 @@ import { FavoritesModule } from './favorites/favorites.module';
 		FavoritesModule,
 		CommentsModule,
 		LikesModule,
+		OrdersModule,
 		ConfigModule.forRoot(),
 		MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
 		StatisticsModule,

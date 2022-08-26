@@ -7,9 +7,9 @@ export type FavoritesDocument = Favorites & Document;
 
 @Schema()
 export class Favorites{
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })	userId: User;
+	@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })	userId: User;
 	@Prop({ type: Product})
-    item: Product;
+	item: Product;
 }
 
 export const FavoritesSchema = SchemaFactory.createForClass(Favorites);

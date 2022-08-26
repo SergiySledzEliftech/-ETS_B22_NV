@@ -10,12 +10,15 @@ export class GoodController {
 	constructor(private readonly goodService: GoodService) {}
 
 	@Get(':id')
-	async getGood(@Param('id') id: string) {
+	async getGood(@Param('id') id: string): Promise<Product> {
 		return this.goodService.getGoodById(id);
 	}
 
 	@Put(':id')
-	async update(@Body() updateProductDto: UpdateProductDto, @Param('id') id: string): Promise<Product>{
+	async update(
+		@Body() updateProductDto: UpdateProductDto,
+		@Param('id') id: string
+	): Promise<Product>{
 		return this.goodService.updateGood(id, updateProductDto);
 	}
 
