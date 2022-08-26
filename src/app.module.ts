@@ -20,6 +20,7 @@ import { GoodModule } from './good/good.module';
 import { CommentsModule } from './comments/comments.module';
 import { FavoritesModule } from './favorites/favorites.module';
 import { LikesModule} from './likes/likes.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
 	imports: [
@@ -29,6 +30,7 @@ import { LikesModule} from './likes/likes.module';
 		FavoritesModule,
 		CommentsModule,
 		LikesModule,
+		OrdersModule,
 		ConfigModule.forRoot(),
 		MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.hr9dt.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`),
 		StatisticsModule,

@@ -1,8 +1,8 @@
-import {Injectable} from '@nestjs/common';
-import {InjectModel} from '@nestjs/mongoose';
-import {Model} from 'mongoose';
-import {Product, ProductDocument} from './schemas/good.schema';
-import {UpdateProductDto} from './dto/update-product.dto';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Product, ProductDocument } from './schemas/good.schema';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable({})
 export class GoodService {
@@ -12,7 +12,7 @@ export class GoodService {
 		return this.productModel.findById(id);
 	}
 	async updateGood(id: string, productDto: UpdateProductDto): Promise<Product> {
-		return this.productModel.findByIdAndUpdate(id, productDto, {new: true});
+		return this.productModel.findByIdAndUpdate(id, productDto, { new: true });
 	}
 	async getGoodRecommendations(id: string, category, min, max, status, minRating): Promise<Product[]> {
 		return this.productModel.find({
